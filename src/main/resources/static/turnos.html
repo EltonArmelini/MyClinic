@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav_logo">
+                    <i class='bx bxs-business'></i>
+                    <span class="nav_logo-name">MyClinic</span>
+                </a>
+                <div class="nav_list">
+                    <a href="ondontologos.html" class="nav_link"><i class='bx bx-plus-medical'></i> Odontologos</a>
+                    <a href="pacientes.html" class="nav_link"><i class='bx bx-user nav_icon'></i> Pacientes</a>
+                    <a href="turnos.html" class="nav_link"><i class='bx bx-calendar nav_icon'></i> Turnos</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--Container Main start-->
+    <div class="height-100 bg-light">
+        <div class="container mt-4">
+            <h1 class="mb-4">Turnos</h1>
+            <div class="row mb-3">
+                <div class="col-md-6 ">
+                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#addTurnoModal">
+                        <i class='bx bx-user-plus'></i> Agregar Nuevo
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#searchModal">
+                            <i class='bx bxs-search-alt-2'></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="calendar"></div>
+
+            <!-- Modal de búsqueda -->
+            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="searchModalLabel">Buscar Turno</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="searchForm">
+                                <div class="mb-3">
+                                    <label for="searchType" class="form-label">Buscar por:</label>
+                                    <select class="form-select" id="searchType">
+                                        <option selected>--</option>
+                                        <option value="fecha">Fecha del Turno</option>
+                                        <option value="paciente">Paciente (DNI)</option>
+                                        <option value="odontologo">Odontólogo (Matrícula)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3" id="searchFieldContainer">
+                                    <!-- Aquí se mostrarán los campos de búsqueda según la selección -->
+                                </div>
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de resultados de la búsqueda -->
+            <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-labelledby="searchResultsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="searchResultsModalLabel">Resultados de la Búsqueda</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="searchResultsBody">
+                            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nuevo modal para agregar un nuevo turno -->
+            <div class="modal" id="addTurnoModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Agregar Nuevo Turno</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="dniPaciente" class="form-label">DNI Paciente</label>
+                                    <input type="text" class="form-control" id="dniPaciente" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="matriculaOdontologo" class="form-label">Matrícula Odontólogo</label>
+                                    <input type="text" class="form-control" id="matriculaOdontologo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fechaTurno" class="form-label">Fecha Turno</label>
+                                    <input type="date" class="form-control" id="fechaTurno" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para mostrar la información del turno -->
+            <div class="modal fade" id="eventoModal" tabindex="-1" aria-labelledby="eventoModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="eventoModalLabel">Información del Turno</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Fecha del Turno:</strong> <span id="fechaTurnoInfo"></span></p>
+                            <p><strong>Nombre y Apellido del Paciente:</strong> <span id="pacienteNombreInfo"></span></p>
+                            <p><strong>Nombre y Apellido del Odontólogo:</strong> <span id="odontologoNombreInfo"></span>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Container Main end-->
+
+
+
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <script type="module" src="assets/js/turnos-calendar.js"></script>
+    <script type="module" src="assets/js/app/services/turnos.js"></script>
+</body>
+
+</html>
