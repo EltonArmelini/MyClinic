@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="turnos.html")
+@Table(name="turnos")
 @AllArgsConstructor @NoArgsConstructor
 @Getter
 @Setter
