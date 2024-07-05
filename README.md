@@ -1,6 +1,11 @@
 # MyClinic
 
-Proyecto Integrador de Back End
+Proyecto Full Stack Web construido basandose en un modelo de 3 capas: 
+- Front End
+- Back End
+- API
+
+La aplicacion está hecha con el fin de mostrar el funcionamiento de APIs contruidos con Spring Web de Spring Boot, en el cual se desarrollan endoints con la finalidad de realizar las operaciones ABM o CRUD. 
 
 Front End construido con: 
 - **HTML**
