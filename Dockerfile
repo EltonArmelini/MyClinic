@@ -1,4 +1,4 @@
-FROM amazoncorretto:21.0.4-al2023-headless
+FROM openjdk:23-ea-17-jdk-bullseye
 
 ARG JAR_FILE=target/tp-integrador-be-0.0.1-SNAPSHOT.jar
 
