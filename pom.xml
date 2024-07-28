@@ -14,7 +14,7 @@
 	<name>tp-integrador-be</name>
 	<description>Web APP MVC Clinica Ontological</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
