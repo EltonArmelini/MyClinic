@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   database:
-    container_name: 'data-base'
+    container_name: 'database'
     image: 'mysql:8.0'
     environment:
       - 'MYSQL_DATABASE=myclinic'
@@ -13,12 +13,24 @@ services:
       - '3306:3306'
     volumes:
           - mysql-data:/var/lib/mysql
+    networks:
+      - mynetwork
   backend:
+    container_name: 'backend'
     build:
       context: .
     ports:
       - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/myclinic
+      - SPRING_DATASOURCE_USERNAME=appdb
+      - SPRING_DATASOURCE_PASSWORD=secret
     depends_on:
       - database
+    networks:
+      - mynetwork
 volumes:
   mysql-data:
+networks:
+  mynetwork:
+    driver: bridge
