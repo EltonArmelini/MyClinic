@@ -37,7 +37,7 @@ class OdontologoServiceTest {
         OdontologoRequestDTO odontologoRequestDTO = new OdontologoRequestDTO();
         odontologoRequestDTO.setNombreOdontologo("Juan");
         odontologoRequestDTO.setApellidoOdontologo("Lopez");
-        odontologoRequestDTO.setMatricula("ABC");
+        odontologoRequestDTO.setMatricula("CDE");
 
         OdontologoResponseDTO response = iOdontologoService.crear(odontologoRequestDTO);
 
